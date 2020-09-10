@@ -1,3 +1,8 @@
+const MAX_ENEMY = 7;
+const audio = document.createElement('audio');
+audio.src = 'C.mp3';
+audio.style.cssText = `position: absolute; top: 10px`;
+audio.volume = 0.3;
 //создаем переменные для получения нужного <div></div>
 const score = document.querySelector('.score'),    // <div class="score"></div>
   start = document.querySelector('.start'),        // <div class="start"></div>
@@ -39,25 +44,27 @@ function getQuantityElements(heightElement) {
 function startGame() {
   // <div class="start"> добавляем класс hide
   start.classList.add('hide');
-  let audio = document.createElement('audio');
+  audio.play();
   
   
   for (let i = 0; i < getQuantityElements(100); i++) {
     const line = document.createElement('div');
     line.classList.add('line');
-    line.style.top = (i * 100) + 'px';
+    line.style.top = `${i * 100}px`;
     line.y = i * 100;
     gameArea.append(line);
   }
 
   for (let i = 0; i < getQuantityElements(100 * settings.traffic); i++) {
     const enemy = document.createElement('div');
+    const randomEnemy = Math.floor(Math.random() * MAX_ENEMY) + 1;
     enemy.classList.add('enemy');
     enemy.y = -100 * settings.traffic * (i + 1);
     enemy.style.left = Math.random() * (gameArea.offsetWidth - 50) + 'px';
     enemy.style.top = enemy.y + 'px';
-    // enemy.style.background = 'transparent url(./image/enemy2.png) center / cover no-repeat';
+    enemy.style.background = `transparent url(./image/enemy${randomEnemy}.png) center / cover no-repeat`;
     gameArea.append(enemy);
+    console.log(randomEnemy);
   }
 
   settings.start = true;
@@ -100,15 +107,18 @@ function playGame() {
 }
 
 function startRun(event) {
-  if (event.key !== 'F5' && event.key !== 'F12') {
-    event.preventDefault();
+  if (keys.hasOwnProperty(event.key)) {
+    // event.preventDefault();
     keys[event.key] = true;
   }
 }
 
 function stopRun(event) {
-  event.preventDefault();
-  keys[event.key] = false; 
+  // event.preventDefault();
+  if (keys.hasOwnProperty(event.key)) {
+    keys[event.key] = false;
+  }
+   
 }
 
 function moveRoad() {
@@ -132,6 +142,9 @@ function moveEnemy() {
     if (item.y >= document.documentElement.clientHeight) {
       item.y = -100 * settings.traffic;
       item.style.left = Math.random() * (gameArea.offsetWidth - 50) + 'px';     
+      item.style.background = `transparent url(./image/enemy${
+        Math.floor(Math.random() * MAX_ENEMY) + 1       
+      }.png) center / cover no-repeat`;
     }
   });
 }
