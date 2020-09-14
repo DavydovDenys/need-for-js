@@ -56,7 +56,7 @@ table {
 }
 
 .game {
-  height: 100vh;
+  /* height: 100vh; */
   display: flex;
   justify-content: center;
   align-self: center;
@@ -82,9 +82,9 @@ table {
   position: absolute;
   left: 0;
   top: 0;
-  width: 20%;
-  margin: 0%;
-  padding: 2rem;
+  width: 100%;
+  margin: 0;
+  padding: 0;
   text-align: center;
   z-index: 200;
   color: #fff;
@@ -98,9 +98,9 @@ table {
   position: absolute;
   left: 0;
   top: 0;
-  width: 20%;
-  margin: 0%;
-  padding: 1rem;
+  width: 100%;
+  margin: 0;
+  padding: 0;
   text-align: center;
   z-index: 200;
   color: skyblue;
@@ -113,4 +113,9 @@ table {
 .btn {
   cursor: pointer;
   padding: 10px 30px;
+  background-color: white;
+}
+
+.btn:hover {
+  background-color: springgreen;
 }

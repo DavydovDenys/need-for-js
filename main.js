@@ -18,7 +18,7 @@ const score = document.querySelector('.score'),    // <div class="score"></div>
 // добаавляем класс .car <div class="car"></div>  
 car.classList.add('car');
 gameArea.style.height = Math.floor(document.documentElement.clientHeight / HEIGHT_ELEM) * HEIGHT_ELEM;
-
+// start.style.width = `${document.documentElement.offsetWidth}px`;
 // добавляем обработчик событий(click)-при нажатии вызывается ф-я startGame
 start.addEventListener('click', startGame);
 
@@ -192,7 +192,8 @@ function moveEnemy() {
         // crash.play();
         // audio.pause();
         start.classList.remove('hide');
-        score.style.top = score.offsetHeight;
+        // score.style.top = score.offsetHeight;
+        score.style.top = `${start.offsetHeight}px`;
       }
     
     
@@ -210,3 +211,9 @@ function moveEnemy() {
 }
 // console.log(Math.floor(getQuantityElements(100)));
 // console.dir(gameArea);
+
+console.log('Document width -', document.documentElement.offsetWidth);
+console.log('start width- ', start.offsetWidth);
+console.dir(start.offsetHeight);
+console.log(document.querySelector('.start'));
+console.log(document.querySelector('.game').offsetWidth);
