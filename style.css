@@ -55,6 +55,12 @@ table {
   bottom: 10px;
 }
 
+.game {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-self: center;
+}
 
 .gameArea {
   width: 300px;
@@ -68,7 +74,43 @@ table {
 .line {
   position: absolute;
   width: 10px;
-  height: 50px;
   background: #fff;
   left: 145px;
+}
+
+.start {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 20%;
+  margin: 0%;
+  padding: 2rem;
+  text-align: center;
+  z-index: 200;
+  color: #fff;
+  font-size: 1.5rem;
+  background: black;
+  font-family: sans-serif;
+  font-weight: 700;
+}
+
+.score {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 20%;
+  margin: 0%;
+  padding: 1rem;
+  text-align: center;
+  z-index: 200;
+  color: skyblue;
+  font-size: 1.5rem;
+  background: black;
+  font-family: sans-serif;
+  font-weight: 500;
+}
+
+.btn {
+  cursor: pointer;
+  padding: 10px 30px;
 }
