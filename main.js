@@ -122,6 +122,7 @@ function playGame() {
   moveEnemy();
 
   if (settings.start) {
+    score.style.top = `0px`;
     settings.score += settings.speed;
     score.innerHTML = 'SCORE<br>' + settings.score; 
 
@@ -194,7 +195,9 @@ function moveEnemy() {
         start.classList.remove('hide');
         // score.style.top = score.offsetHeight;
         score.style.top = `${start.offsetHeight}px`;
+        
       }
+    
     
     
     item.y += settings.speed / 2;
@@ -207,8 +210,11 @@ function moveEnemy() {
         Math.floor(Math.random() * MAX_ENEMY) + 1       
       }.png) center / cover no-repeat`;
     }
-  });
+  }); 
 }
+
+
+        
 // console.log(Math.floor(getQuantityElements(100)));
 // console.dir(gameArea);
 
